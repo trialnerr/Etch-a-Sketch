@@ -10,13 +10,22 @@
   <body>
     <div class="container">
       <div class="header">
-        <p>Etch-a-Sketch</p>
+        <h1>Etch-a-Sketch</h1>
         <div class="settings">
-          <input id="input" type="range" min="16" max="100" step="4" />
-          <p>grid-size: <output id="value"></output></p>
-          <button></button>
-          <button></button>
-          <button></button>
+          <div>
+            <input type="color" value="#ff0000" id="color-picker" color />
+            <label for="color-picker">color</label>
+          </div>
+          <div>
+            <button>rainbow</button>
+          </div>
+          <div>
+            <input id="input" type="range" min="16" max="100" step="4" />
+            <p>grid-size: <output id="value"></output></p>
+          </div>
+          <div>
+            <button>clear</button>
+          </div>
         </div>
       </div>
       <div class="canvas">
