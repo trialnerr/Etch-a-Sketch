@@ -1,0 +1,70 @@
+html {
+  font-size: 15px;
+  /* background: url('images/background.png') bottom center;
+    background-size: cover; */
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: greenyellow;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  margin: 15px;
+  padding: 10px;
+  background-color: brown;
+  width: 1000px;
+  height: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+    width: 800px; 
+    text-align: center;
+}
+
+.canvas {
+  background-color: grey;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.grid {
+  width: 800px;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.square {
+  border: 1px solid rgb(108, 108, 108);
+  display: flex;
+  
+}
+
+.row {
+  display: flex;
+  width: 100%;
+}
