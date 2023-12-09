@@ -65,7 +65,7 @@ button {
   font-size: 15px;
   letter-spacing: 2px;
   color: rgb(77, 77, 77);
-  padding: 5px;
+  padding: 10px 5px;
   border-radius: 5px;
   border: 1px;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -110,6 +110,10 @@ button {
     #ffaa98
   );
   color: #333;
+}
+
+.isEraseMode{
+  background: rgb(103, 103, 103); 
 }
 
 

@@ -5,12 +5,21 @@ const value = document.querySelector("#value");
 const input = document.querySelector("#input");
 const colorPicker = document.querySelector("#color-picker");
 const rainbowBtn = document.querySelector(".rainbow");
-console.log(colorPicker.value);
+const eraser = document.querySelector(".eraser");
+const clear = document.querySelector(".clear");
 
-grid.addEventListener("mousedown", () => {
-  isMouseDown = true;
-});
-
+function setUpGrid() {
+  grid.addEventListener("mousedown", () => {
+    isMouseDown = true;
+  });
+  grid.addEventListener("mouseup", () => {
+    isMouseDown = false;
+  });
+  grid.addEventListener("dragstart", (e) => {
+    e.preventDefault();
+  });
+  input.value = 16;
+}
 
 function createGrid(n) {
   for (let i = 0; i < n; i++) {
@@ -40,6 +49,7 @@ function changeGridSize() {
     value.textContent = event.target.value;
     removeGrid();
     createGrid(event.target.value);
+
     applyColorListener();
   });
 }
@@ -54,8 +64,10 @@ function applyColorListener() {
 
 function handleMouseEnter(e) {
   if (isMouseDown) {
-    if (rainbowBtn.classList.contains("isRainbowMode")) {
-      const randomColor = getRandomColor()
+    if (eraser.classList.contains("isEraseMode")) {
+      e.target.style.background = "#eae7e7";
+    } else if (rainbowBtn.classList.contains("isRainbowMode")) {
+      const randomColor = getRandomColor();
       e.target.style.background = randomColor;
     } else {
       e.target.style.background = colorPicker.value;
@@ -63,10 +75,9 @@ function handleMouseEnter(e) {
   }
 }
 
-function handleClick(e){
-
+function handleClick(e) {
   if (rainbowBtn.classList.contains("isRainbowMode")) {
-    const randomColor = getRandomColor()
+    const randomColor = getRandomColor();
     e.target.style.background = randomColor;
   } else {
     e.target.style.background = colorPicker.value;
@@ -82,23 +93,41 @@ function getRandomColor() {
   return color;
 }
 
-function setRainbowMode() {
+function setButtonListener() {
   rainbowBtn.addEventListener("click", () => {
     rainbowBtn.classList.toggle("isRainbowMode");
   });
+  eraser.addEventListener("click", () => {
+    eraser.classList.toggle("isEraseMode");
+  });
+
+  clear.addEventListener("click", clearGrid);
 }
 
-createGrid(16);
-changeGridSize();
-applyColorListener();
-colorPicker.addEventListener("change", applyColorListener);
-setRainbowMode();
-//create an option to paint in color mode
+function clearGrid() {
+  const squares = document.querySelectorAll(".square");
 
-//add an event listener to all the square divs
-//on key down they should apply selected color as background
-// on key down again toggle the color
+  squares.forEach((square) => {
+    square.style.background = "#eae7e7";
+  });
+}
 
-//create an option to paint in rainbow mode
+function main() {
+  setUpGrid();
+  createGrid(16);
+  changeGridSize();
+  applyColorListener();
+  colorPicker.addEventListener("change", applyColorListener);
+  setButtonListener();
+}
+
+window.onload = main;
+
 //option to clear the board
-//option to clear a cell
+// when the clear button is clicked
+//make every cell revert to original color
+
+// option to erase
+//when that button has been clicked
+//apply an eventlistener to all the squares
+//when they are clicked they should reset the color back to original
